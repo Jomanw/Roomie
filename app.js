@@ -12,7 +12,6 @@ ws281x.init(NUM_LEDS);
 
 var lightsMoving = false;
 
-// Add this to see if it works
 /*
 redData = new Uint32Array(NUM_LEDS);
 for(var i=0;i<NUM_LEDS;i++) {
@@ -28,13 +27,36 @@ for(var i=0;i<NUM_LEDS;i++) {
 }
 */
 
-// Current Idea: Use Child Processes. 
+// Current Idea: Use Child Processes.
 
+//Function for extracting HSL values from RGB
+/*
+function rgbToHsl(r, g, b){
+    r /= 255, g /= 255, b /= 255;
+    var max = Math.max(r, g, b), min = Math.min(r, g, b);
+    var h, s, l = (max + min) / 2;
+
+    if(max == min){
+        h = s = 0; // achromatic
+    }else{
+        var d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch(max){
+            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+            case g: h = (b - r) / d + 2; break;
+            case b: h = (r - g) / d + 4; break;
+        }
+        h /= 6;
+    }
+
+    return [h, s, l];
+}
+*/
 
 var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-	extended: true 
+	extended: true
 }));
 
 var mode = "random";  // Mode currently in
@@ -52,7 +74,7 @@ app.get('/', function (req, res) {
 });
 
 app.post('/animations', function (req, res) {
-	console.log(req.method);	
+	console.log(req.method);
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	fs.readFile('./form.html', function(err,data) {
 		res.write(data);
@@ -78,7 +100,7 @@ app.post('/colors', function (req, res) {
 	light_process = cp.fork('child.js');
 	light_process.send(mode)
 });
-	
+
 
 app.listen(80, function() {
 	console.log('done');
