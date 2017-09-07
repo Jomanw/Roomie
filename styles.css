@@ -1,0 +1,10 @@
+#radio-group{
+	display:inline-block;
+}
+#label{
+	vertical-align:top;
+}
+.box{
+	width:100px;
+	height:100px;
+}

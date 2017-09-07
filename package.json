@@ -1,0 +1,16 @@
+{
+  "name": "sparta",
+  "version": "1.0.0",
+  "description": "A hub to control aspects of the room",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Jordan Wick",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4"
+  }
+}

@@ -1,0 +1,31 @@
+<link rel = "stylesheet" type="text/css" href="styles.css" />
+
+<div id="radio-group">
+
+<span id="label">Choose Your Command!</span>  <br>
+<form action="/animations" method="post">
+	<input type="radio" name="mode" onChange="this.form.submit()" value='random'> Random <br>
+	<input type="radio" name="mode" onChange="this.form.submit()" value='binary-search'> Binary Search <br>
+	<input type="radio" name="mode" onChange="this.form.submit()" value='move'> Moving Stream <br>
+</form>
+<form action="/colors" method="post">
+	<input type="range" name="primary_color" onChange="this.form.submit()"> Color Selection 
+	<div class="box" style="background-color:#FF00FF;">fjaklds</div>
+	<br> 
+	<input type="range" name="secondary_color" onChange="this.form.submit()"> Color Selection 
+	<br>
+	
+</form>
+</div>
+Shit to do: <br>
+-Put all of the list sorting algorithms into animations on the LED Strip! <br>
+-Add buttons to select primary colors for use both in animations and in static displays<br>
+-Add microphone to listen to the volume of the music, and adjust brightness based on music/adjust parameters of 
+animations based on music speeds <br>
+
+
+To increase speed, maybe open up multiple child processes at the very beginning, or maybe as another loop is running, open another child process.
+Basically, whenever the user changes an option, they have to wait for another process to start, which takes time. However, if you have a 
+process just running and ready to go, then you could quickly kill the current process, send a message to the one that you started a while 
+ago so it can immediately start running, and then start a new one to be used later when the current one is killed. This way, you 
+always have one in the background, ready to go.
