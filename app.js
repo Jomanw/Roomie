@@ -12,6 +12,7 @@ ws281x.init(NUM_LEDS);
 
 var lightsMoving = false;
 
+// Add this to see if it works
 /*
 redData = new Uint32Array(NUM_LEDS);
 for(var i=0;i<NUM_LEDS;i++) {
