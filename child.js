@@ -27,8 +27,7 @@ process.on('message', function(m) {
 	console.log(m.mode);
 	console.log(m.primary_color);
 	if (m.mode == "move") {
-
-		}
+		runMovingStreamAnimation(m.primary_color,m.secondary_color);
 	} else if (m.mode == "red") {
 		ws281x.render(redData);
 	} else if (m.mode == "random")  {
