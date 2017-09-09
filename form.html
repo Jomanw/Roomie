@@ -4,6 +4,7 @@
 
 <span id="label">Choose Your Command!</span>  <br>
 <form action="/animations" method="post">
+	<input type="radio" name="mode" onChange="this.form.submit()" value='off'> Off <br>
 	<input type="radio" name="mode" onChange="this.form.submit()" value='random'> Random <br>
 	<input type="radio" name="mode" onChange="this.form.submit()" value='binary-search'> Binary Search <br>
 	<input type="radio" name="mode" onChange="this.form.submit()" value='move'> Moving Stream <br>

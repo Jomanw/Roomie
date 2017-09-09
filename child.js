@@ -44,8 +44,20 @@ process.on('message', function(m) {
 		ws281x.render(redData);
 	} else if (m.mode == "random")  {
 		runRandomPixelAnimation(m.primary_color,m.secondary_color);
+	} else if (m.mode == "off") {
+		turnOff();
 	}
 });
+
+
+
+var turnOff = function() {
+	pixelData = new Uint32Array(NUM_LEDS);
+	for (var i = 0; i < NUM_LEDS;i++) {
+		pixelData[i] = 0x000000;
+	}
+	ws281x.render(pixelData);
+}
 
 var runRandomPixelAnimation = function (color1,color2) {
 	var count = NUM_LEDS;
