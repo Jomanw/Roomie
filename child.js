@@ -26,7 +26,7 @@ var previous = 0;
 process.on('message', function(m) {
 	console.log(m.mode);
 	console.log(m.color);
-	if (m == "move") {
+	if (m.mode == "move") {
 		moveData = new Uint32Array(NUM_LEDS);
 		for(var i=0;i<NUM_LEDS;i++) {
 			moveData[i] = 0xffffff;
@@ -40,9 +40,9 @@ process.on('message', function(m) {
 			previous = (previous + 1) % NUM_LEDS;
 			moveData[previous] = 0xff00ff;
 		}
-	} else if (m == "red") {
+	} else if (m.mode == "red") {
 		ws281x.render(redData);
-	} else if (m == "random")  {
+	} else if (m.mode == "random")  {
 		runRandomPixelAnimation(0xff00ff,0x00ff00);
 	}
 });
