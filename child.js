@@ -27,18 +27,7 @@ process.on('message', function(m) {
 	console.log(m.mode);
 	console.log(m.primary_color);
 	if (m.mode == "move") {
-		moveData = new Uint32Array(NUM_LEDS);
-		for(var i=0;i<NUM_LEDS;i++) {
-			moveData[i] = 0xffffff;
 
-		}
-		while (true) {
-			process.send(m);
-			sleep.msleep(30);
-			ws281x.render(moveData);
-			moveData[previous] = 0x000000;
-			previous = (previous + 1) % NUM_LEDS;
-			moveData[previous] = 0xff00ff;
 		}
 	} else if (m.mode == "red") {
 		ws281x.render(redData);
@@ -49,7 +38,26 @@ process.on('message', function(m) {
 	}
 });
 
-
+var runMovingStreamAnimation = function (color1,color2) {
+	moveData = new Uint32Array(NUM_LEDS);
+	for(var i=0;i<NUM_LEDS;i++) {
+		moveData[i] = color2;
+	}
+	var spacing = 5;
+	var current_count = 0;
+	while (true) {
+		for (var i = 0;i<NUM_LEDS;i++) {
+			if (i % spacing == current_count) {
+				moveData[i] = color1;
+			} else {
+				moveData[i] = color2;
+			}
+		}
+	current_count += 1;
+	current_count = current_count % spacing;
+	sleep.msleep(30);
+	ws281x.render(moveData);
+}
 
 var turnOff = function() {
 	pixelData = new Uint32Array(NUM_LEDS);

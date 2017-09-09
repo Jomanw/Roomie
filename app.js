@@ -61,7 +61,7 @@ app.use(bodyParser.urlencoded({
 
 var mode = "random";  // Mode currently in
 var primary_color = 0x00ff00;
-var secondary_color = 0xff0000;
+var secondary_color = 0xff00ff;
 
 app.get('/', function (req, res) {
 	res.writeHead(200, {'Content-Type': 'text/html'});
