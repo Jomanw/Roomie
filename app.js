@@ -84,7 +84,9 @@ app.post('/animations', function (req, res) {
 	light_process.kill('SIGHUP');
 	light_process = cp.fork('child.js');
 	mode = req.body.mode;
-	light_process.send({mode:mode, color:primary_color});
+	light_process.send({mode:mode,
+		primary_color:primary_color,
+		secondary_color:secondary_color});
 });
 
 app.post('/colors', function (req, res) {
