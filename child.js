@@ -52,12 +52,12 @@ var runMovingStreamAnimation = function (color1,color2) {
 				moveData[i] = color2;
 			}
 		}
-	current_count += 1;
-	current_count = current_count % spacing;
-	sleep.msleep(30);
-	ws281x.render(moveData);
-}
-
+		current_count += 1;
+		current_count = current_count % spacing;
+		sleep.msleep(30);
+		ws281x.render(moveData);
+		}
+	}
 var turnOff = function() {
 	pixelData = new Uint32Array(NUM_LEDS);
 	for (var i = 0; i < NUM_LEDS;i++) {
