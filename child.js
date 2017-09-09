@@ -24,12 +24,13 @@ for(var i=0;i<NUM_LEDS;i++) {
 
 var previous = 0;
 process.on('message', function(m) {
-	console.log(m);
+	console.log(m.mode);
+	console.log(m.color);
 	if (m == "move") {
 		moveData = new Uint32Array(NUM_LEDS);
 		for(var i=0;i<NUM_LEDS;i++) {
 			moveData[i] = 0xffffff;
-			
+
 		}
 		while (true) {
 			process.send(m);
@@ -42,7 +43,6 @@ process.on('message', function(m) {
 	} else if (m == "red") {
 		ws281x.render(redData);
 	} else if (m == "random")  {
-		pixelData = new Uint32Array(NUM_LEDS);
 		runRandomPixelAnimation(0xff00ff,0x00ff00);
 	}
 });
@@ -55,7 +55,7 @@ var runRandomPixelAnimation = function (color1,color2) {
 		count = NUM_LEDS;
 		pixelData = new Uint32Array(NUM_LEDS);
 		pixelIndices = new Uint32Array(NUM_LEDS);
-		
+
 		for (var i = 0; i < NUM_LEDS;i++) {
 			pixelIndices[i]=i;
 		}
@@ -77,7 +77,3 @@ var runRandomPixelAnimation = function (color1,color2) {
 		}
 	}
 }
-
-
-
-
