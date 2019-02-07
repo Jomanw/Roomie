@@ -23,6 +23,7 @@ var NUM_LEDS = 300;
 
 var previous = 0;
 process.on('message', function(m) {
+	console.log(m);
 	if (m.animationType == "move") {
 		runMovingStreamAnimation(m.lights, m.primary_color,m.secondary_color);
 	} else if (m.animationType == "red") {
