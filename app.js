@@ -70,6 +70,7 @@ app.post('/animations', function (req, res) {
 	light_process = cp.fork('child.js');
 	light_process.send({
 		data:req.body
+	});
 });
 
 app.post('/colors', function (req, res) {
