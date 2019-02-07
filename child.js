@@ -24,7 +24,7 @@ var NUM_LEDS = 300;
 var previous = 0;
 process.on('message', function(m) {
 	if (m.animationType == "move") {
-		runMovingStreamAnimation(m.primary_color,m.secondary_color);
+		runMovingStreamAnimation(m.lights, m.primary_color,m.secondary_color);
 	} else if (m.animationType == "red") {
 		ws281x.render(redData);
 	} else if (m.animationType == "random")  {
