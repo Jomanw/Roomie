@@ -1,5 +1,5 @@
 var sleep = require('sleep');
-var NUM_LEDS = 300;
+var NUM_LEDS = 100;
 var ws281x = require('rpi-ws281x-native');
 
 pixelData = new Uint32Array(NUM_LEDS);
@@ -30,7 +30,7 @@ process.on('message', function(m) {
 		runMovingStreamAnimation(data.primaryColor,data.secondaryColor);
 	} else if (data.animationType == "singleColor") {
 		for(var i=0;i<NUM_LEDS;i++) {
-			pixelData[i] = data.primaryColor;
+			pixelData[i] = parseInt(data.primaryColor, 16);
 		}
 		ws281x.render(pixelData);
 
