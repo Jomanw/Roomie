@@ -1,5 +1,5 @@
 var express = require('express');
-var ws281x = require('rpi-ws281x-native');
+// var ws281x = require('rpi-ws281x-native');
 var bodyParser = require('body-parser');
 var cp = require('child_process');
 var light_process = cp.fork('child.js');
@@ -7,9 +7,9 @@ var sleep = require('sleep');
 var fs = require('fs');
 
 
-var NUM_LEDS = parseInt(process.argv[2], 10) || 300,
-	 pixelData = new Uint32Array(NUM_LEDS);
-ws281x.init(NUM_LEDS);
+// var NUM_LEDS = parseInt(process.argv[2], 10) || 300,
+// 	 pixelData = new Uint32Array(NUM_LEDS);
+// ws281x.init(NUM_LEDS);
 
 var lightsMoving = false;
 
@@ -69,8 +69,8 @@ app.post('/animations', function (req, res) {
 		res.write(data);
 		res.end();
 	});
-	light_process.kill('SIGHUP');
-	light_process = cp.fork('child.js');
+	// light_process.kill('SIGHUP');
+	// light_process = cp.fork('child.js');
 	light_process.send({
 		data:req.body
 	});
