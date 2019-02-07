@@ -27,7 +27,7 @@ process.on('message', function(m) {
 	console.log(m);
 	if (m.animationType == "stream") {
 		runMovingStreamAnimation(m.primary_color,m.secondary_color);
-	} else if (m.animationType == "color") {
+	} else if (m.animationType == "singleColor") {
 		ws281x.render(redData);
 	} else if (m.animationType == "random")  {
 		runRandomPixelAnimation(m.lights,m.primary_color,m.secondary_color);

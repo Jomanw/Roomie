@@ -2,6 +2,26 @@
 <script src="jscolor.js"></script>
 
 
+<script>
+
+function animationSubmit(animationType) {
+	var xhr = new XMLHttpRequest();
+
+	xhr.open("POST", document.location.host + "/animations", true);
+	xhr.setRequestHeader('Content-Type', 'application/json');
+	xhr.send(JSON.stringify({
+		animationType:animationType,
+		primaryColor:document.getElementById("primaryColor").value,
+		secondaryColor:document.getElementById("secondaryColor").value
+}));
+	var form = document.getElementById(formId);
+
+}
+
+
+</script>
+
+
 <div id="radio-group">
 
 <span id="label">Choose Your Command!</span>  <br>
@@ -17,10 +37,11 @@
 </form> -->
 
 <form action="/animations" method="post" id="animationForm">
-	<button type="submit" form="animationForm" value="stream"> Stream </button>
+	<button type="button" form="animationForm" onClick="animationSubmit('stream')" value="stream"> Stream </button>
+	<button type="button" form="animationForm" onClick="animationSubmit('singleColor')" value="singleColor"> Stream </button>
 
-	<input type="color" name="primaryColor" onChange="this.form.submit()"> Primary Color <br>
-	<input type="color" name="secondaryColor" onChange="this.form.submit()"> Secondary Color <br>
+	<input type="jscolor" name="primaryColor" id="primaryColor" onChange="animationSubmit('singleColor')"> Primary Color <br>
+	<input type="jscolor" name="secondaryColor" id="secondaryColor" onChange="animationSubmit('singleColor')"> Secondary Color <br>
 </form>
 
 
