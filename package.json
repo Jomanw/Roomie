@@ -5,12 +5,16 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node app.js"
   },
   "author": "Jordan Wick",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.2",
-    "express": "^4.15.4"
+    "coffee-script": "^1.12.7",
+    "coffeescript": "^2.3.2",
+    "express": "^4.15.4",
+    "fft-js": "0.0.11",
+    "mic": "^2.1.2"
   }
 }
