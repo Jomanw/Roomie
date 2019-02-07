@@ -1,5 +1,5 @@
 var sleep = require('sleep');
-var NUM_LEDS = 100;
+var NUM_LEDS = 300;
 var ws281x = require('rpi-ws281x-native');
 
 pixelData = new Uint32Array(NUM_LEDS);
