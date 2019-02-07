@@ -5,6 +5,8 @@ var cp = require('child_process');
 var light_process = cp.fork('child.js');
 var sleep = require('sleep');
 var fs = require('fs');
+app.use(express.static(__dirname));
+
 
 var NUM_LEDS = parseInt(process.argv[2], 10) || 300,
 	 pixelData = new Uint32Array(NUM_LEDS);
