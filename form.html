@@ -7,7 +7,7 @@
 function animationSubmit(animationType) {
 	var xhr = new XMLHttpRequest();
 
-	xhr.open("POST", document.location.host + "/animations", true);
+	xhr.open("POST",  "/animations", true);
 	console.log(document.location.host + "/animations");
 	xhr.setRequestHeader('Content-Type', 'application/json');
 	xhr.send(JSON.stringify({
