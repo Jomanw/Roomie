@@ -27,7 +27,7 @@ process.on('message', function(m) {
 	console.log(m);
 	var data = m.data;
 	if (data.animationType == "stream") {
-		runMovingStreamAnimation(data.primaryColor,data.secondaryColor);
+		runMovingStreamAnimation(parseInt(data.primaryColor, 16),  parseInt(data.secondaryColor, 16));
 	} else if (data.animationType == "singleColor") {
 		for(var i=0;i<NUM_LEDS;i++) {
 			pixelData[i] = parseInt(data.primaryColor, 16);
@@ -39,7 +39,7 @@ process.on('message', function(m) {
 	}
 });
 
-var runMovingStreamAnimation = function (lights,color1,color2) {
+var runMovingStreamAnimation = function (color1,color2) {
 	moveData = new Uint32Array(NUM_LEDS);
 	for(var i=0;i<NUM_LEDS;i++) {
 		moveData[i] = color2;
@@ -57,7 +57,7 @@ var runMovingStreamAnimation = function (lights,color1,color2) {
 		current_count += 1;
 		current_count = current_count % spacing;
 		sleep.msleep(30);
-		lights.render(moveData);
+		ws281x.render(moveData);
 		}
 	}
 // var turnOff = function() {
