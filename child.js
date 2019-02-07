@@ -47,7 +47,7 @@ var runMovingStreamAnimation = function (color1,color2) {
 	}
 	var spacing = 5;
 	var current_count = 0;
-	while (true) {
+	// while (true) {
 		for (var i = 0;i<NUM_LEDS;i++) {
 			if (i % spacing == current_count) {
 				moveData[i] = color1;
@@ -61,7 +61,7 @@ var runMovingStreamAnimation = function (color1,color2) {
 		ws281x.render(moveData);
 		setImmediate(function() {runMovingStreamAnimation(color1, color2);})
 		}
-	}
+	// }
 // var turnOff = function() {
 // 	pixelData = new Uint32Array(NUM_LEDS);
 // 	for (var i = 0; i < NUM_LEDS;i++) {
