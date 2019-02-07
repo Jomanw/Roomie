@@ -25,12 +25,15 @@ ws281x.init(NUM_LEDS);
 var previous = 0;
 process.on('message', function(m) {
 	console.log(m);
-	if (m.animationType == "stream") {
-		runMovingStreamAnimation(m.primary_color,m.secondary_color);
-	} else if (m.animationType == "singleColor") {
-		ws281x.render(redData);
-	} else if (m.animationType == "random")  {
-		runRandomPixelAnimation(m.lights,m.primary_color,m.secondary_color);
+	var data = m.data;
+	if (data.animationType == "stream") {
+		runMovingStreamAnimation(data.primaryColor,data.secondaryColor);
+	} else if (data.animationType == "singleColor") {
+		for(var i=0;i<NUM_LEDS;i++) {
+			pixelData[i] = primaryColor;
+		}
+		ws281x.render(pixelData);
+
 	} else if (m.animationType == "off") {
 		turnOff();
 	}
