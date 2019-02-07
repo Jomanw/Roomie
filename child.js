@@ -1,8 +1,8 @@
 var sleep = require('sleep');
 var NUM_LEDS = 300;
 // var NUM_LEDS = parseInt(process.argv[2], 10) || 100,
-// 	 pixelData = new Uint32Array(NUM_LEDS);
-// ws281x.init(NUM_LEDS);
+pixelData = new Uint32Array(NUM_LEDS);
+ws281x.init(NUM_LEDS);
 //
 // redData = new Uint32Array(NUM_LEDS);
 // for(var i=0;i<NUM_LEDS;i++) {
@@ -25,7 +25,7 @@ var previous = 0;
 process.on('message', function(m) {
 	console.log(m);
 	if (m.animationType == "move") {
-		runMovingStreamAnimation(m.lights, m.primary_color,m.secondary_color);
+		runMovingStreamAnimation(m.primary_color,m.secondary_color);
 	} else if (m.animationType == "red") {
 		ws281x.render(redData);
 	} else if (m.animationType == "random")  {
