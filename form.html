@@ -40,7 +40,7 @@ function animationSubmit(animationType) {
 	<button type="button" form="animationForm" onClick="animationSubmit('stream')" value="stream"> Stream </button>
 	<button type="button" form="animationForm" onClick="animationSubmit('singleColor')" value="singleColor"> Stream </button>
 
-	<input class="jscolor" name="primaryColor" id="primaryColor" onFineChange="animationSubmit('singleColor')"> Primary Color <br>
+	<input class="jscolor {onFineChange=animationSubmit('singleColor')}" name="primaryColor" id="primaryColor"> Primary Color <br>
 	<input class="jscolor" name="secondaryColor" id="secondaryColor" onFineChange="animationSubmit('singleColor')"> Secondary Color <br>
 </form>
 
