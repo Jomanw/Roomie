@@ -30,7 +30,7 @@ process.on('message', function(m) {
 		runMovingStreamAnimation(data.primaryColor,data.secondaryColor);
 	} else if (data.animationType == "singleColor") {
 		for(var i=0;i<NUM_LEDS;i++) {
-			pixelData[i] = primaryColor;
+			pixelData[i] = data.primaryColor;
 		}
 		ws281x.render(pixelData);
 
