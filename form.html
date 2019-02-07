@@ -1,9 +1,11 @@
 <link rel = "stylesheet" type="text/css" href="styles.css" />
+<script src="jscolor.js"></script>
+
 
 <div id="radio-group">
 
 <span id="label">Choose Your Command!</span>  <br>
-<form action="/animations" method="post">
+<!-- <form action="/animations" method="post">
 	<input type="radio" name="animationType" onChange="this.form.submit()" value='off'> Off <br>
 	<input type="radio" name="animationType" onChange="this.form.submit()" value='random'> Random <br>
 	<input type="radio" name="animationType" onChange="this.form.submit()" value='binary-search'> Binary Search <br>
@@ -12,18 +14,18 @@
 	<input type="radio" name="animationType" onChange="this.form.submit()" value='move'> Random Colors going through LEDs and stacking onto each other <br>
 	<input type="radio" name="animationType" onChange="this.form.submit()" value='move'> Moving Stream <br>
 
-</form>
-
-<!-- <form action="/animations" method="post" id="animationForm">
-	<input type="color" name="primaryColor"> Primary Color <br>
-	<input type="color" name="secondaryColor"> Secondary Color <br>
 </form> -->
 
-<!-- <button type="submit" form="animationForm" value="Submittt"> submit </button>
- -->
+<form action="/animations" method="post" id="animationForm">
+	<button type="submit" form="animationForm" value="stream"> Stream </button>
+
+	<input type="color" name="primaryColor" onChange="this.form.submit()"> Primary Color <br>
+	<input type="color" name="secondaryColor" onChange="this.form.submit()"> Secondary Color <br>
+</form>
 
 
-<script src="jscolor.js"></script>
+
+
 Color: <input class="jscolor" value="ab2567">
 
 <!-- <form action="/colors" method="post">
