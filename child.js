@@ -23,6 +23,7 @@ ws281x.init(NUM_LEDS);
 // }
 
 var previous = 0;
+var isRunning = 0;
 process.on('message', function(m) {
 	console.log(m);
 	var data = m.data;
@@ -58,6 +59,7 @@ var runMovingStreamAnimation = function (color1,color2) {
 		current_count = current_count % spacing;
 		sleep.msleep(30);
 		ws281x.render(moveData);
+		setImmediate(function() {runMovingStreamAnimation(color1, color2);})
 		}
 	}
 // var turnOff = function() {
