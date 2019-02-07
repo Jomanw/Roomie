@@ -60,12 +60,13 @@ app.get('/', function (req, res) {
 
 app.post('/animations', function (req, res) {
 	console.log(req.method);
+	console.log(req.body.animationType)
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	fs.readFile('./form.html', function(err,data) {
 		res.write(data);
 		res.end();
 	});
-	var animationType = req.body.animation_type
+	var animationType = req.body.animationType
 	light_process.kill('SIGHUP');
 	light_process = cp.fork('child.js');
 	mode = req.body.mode;
