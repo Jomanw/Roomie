@@ -7,20 +7,28 @@
 	<input type="radio" name="animationType" onChange="this.form.submit()" value='off'> Off <br>
 	<input type="radio" name="animationType" onChange="this.form.submit()" value='random'> Random <br>
 	<input type="radio" name="animationType" onChange="this.form.submit()" value='binary-search'> Binary Search <br>
-	<input type="radio" name="animationType" onChange="this.form.submit()" value='move'> Moving Stream <br>
+	<input type="radio" name="animationType" onChange="this.form.submit()" value='stream'> Moving Stream <br>
 	<input type="radio" name="animationType" onChange="this.form.submit()" value='move'> Fill From Middle Variant <br>
 	<input type="radio" name="animationType" onChange="this.form.submit()" value='move'> Random Colors going through LEDs and stacking onto each other <br>
 	<input type="radio" name="animationType" onChange="this.form.submit()" value='move'> Moving Stream <br>
 
 </form>
-<form action="/colors" method="post">
+
+<form action="/animations" method="post" id="animationForm">
+	<input type="color" name="primaryColor"> Primary Color <br>
+	<input type="color" name="secondaryColor"> Secondary Color <br>
+</form>
+
+<button type="submit" form="animationForm" value="Submittt"> submit </button>
+
+<!-- <form action="/colors" method="post">
 	<input type="range" name="primary_color" onChange="this.form.submit()"> Primary Color Selection
 	<div class="box" style="background-color:#FF00FF;">fjaklds</div>
 	<br>
 	<input type="range" name="secondary_color" onChange="this.form.submit()"> Secondary Color Selection
 	<br>
 
-</form>
+</form> -->
 </div>
 Shit to do: <br>
 -Put all of the list sorting algorithms into animations on the LED Strip! <br>
