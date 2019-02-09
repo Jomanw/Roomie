@@ -76,19 +76,19 @@ app.post('/animations', function (req, res) {
 	});
 });
 
-app.post('/colors', function (req, res) {
-	console.log(req.method);
-	res.writeHead(200, {'Content-Type': 'text/html'});
-	fs.readFile('./form.html', function(err,data) {
-		res.write(data);
-		res.end();
-	});
-	console.log(req.body.primary_color);
-	console.log(req.body.secondary_color);
-	light_process.kill("SIGHUP");
-	light_process = cp.fork('child.js');
-	light_process.send(mode)
-});
+// app.post('/colors', function (req, res) {
+// 	console.log(req.method);
+// 	res.writeHead(200, {'Content-Type': 'text/html'});
+// 	fs.readFile('./form.html', function(err,data) {
+// 		res.write(data);
+// 		res.end();
+// 	});
+// 	console.log(req.body.primary_color);
+// 	console.log(req.body.secondary_color);
+// 	light_process.kill("SIGHUP");
+// 	light_process = cp.fork('child.js');
+// 	light_process.send(mode)
+// });
 
 
 app.listen(80, function() {
