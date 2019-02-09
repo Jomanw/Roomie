@@ -99,6 +99,9 @@ light_process.on('message', function (m) {
 		console.log(m);
 		console.log(m == 'stream');
 		light_process.send({
+			data:{
 			animationType:'stream'
+
+		}
 		})
 });

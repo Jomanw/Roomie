@@ -38,13 +38,13 @@ for(var i=0;i<NUM_LEDS;i++) {
 process.on('message', function(m) {
 	console.log(m);
 	var data = m.data;
-	if (data.animationType != undefined) {
+	if (data.hasOwnProperty('animationType')) {
 		currentMode = data.animationType;
 	}
-	if (data.primaryColor != undefined) {
+	if (data.hasOwnProperty('primaryColor')) {
 		primaryColor = parseInt(data.primaryColor, 16)
 	}
-	if (data.secondaryColor != undefined) {
+	if (data.hasOwnProperty('secondaryColor')) {
 		primaryColor = parseInt(data.secondaryColor, 16)
 	}
 
