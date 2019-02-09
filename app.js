@@ -97,4 +97,8 @@ app.listen(80, function() {
 
 light_process.on('message', function (m) {
 		console.log(m);
+		console.log(m == 'stream');
+		light_process.send({
+			animationType:'stream'
+		})
 });

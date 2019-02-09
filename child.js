@@ -24,35 +24,53 @@ ws281x.init(NUM_LEDS);
 
 var previous = 0;
 var isRunning = 0;
+var currentMode = "off";
+var primaryColor = 0xFFFFFF;
+var secondaryColor = 0xFFFFFF;
+var spacing = 6;
+var current_count = 0;
+
+var moveData = new Uint32Array(NUM_LEDS);
+for(var i=0;i<NUM_LEDS;i++) {
+	moveData[i] = primaryColor;
+}
+
 process.on('message', function(m) {
 	console.log(m);
 	var data = m.data;
-	if (data.animationType == "stream") {
-		runMovingStreamAnimation(parseInt(data.primaryColor, 16),  parseInt(data.secondaryColor, 16));
-	} else if (data.animationType == "singleColor") {
+	if (data.animationType != undefined) {
+		currentMode = data.animationType;
+	}
+	if (data.primaryColor != undefined) {
+		primaryColor = parseInt(data.primaryColor, 16)
+	}
+	if (data.secondaryColor != undefined) {
+		primaryColor = parseInt(data.secondaryColor, 16)
+	}
+
+	if (currentMode == "stream") {
+		runMovingStreamAnimation(primaryColor, secondaryColor);
+	} else if (currentMode == "singleColor") {
 		for(var i=0;i<NUM_LEDS;i++) {
-			pixelData[i] = parseInt(data.primaryColor, 16);
+			pixelData[i] = primaryColor;
 		}
 		ws281x.render(pixelData);
 
-	} else if (m.animationType == "off") {
+	} else if (currentMode == "off") {
 		turnOff();
 	}
 });
 
-var runMovingStreamAnimation = function (color1,color2) {
-	moveData = new Uint32Array(NUM_LEDS);
-	for(var i=0;i<NUM_LEDS;i++) {
-		moveData[i] = color2;
-	}
-	var spacing = 5;
-	var current_count = 0;
+
+
+
+var runMovingStreamAnimation = function (primaryColor,secondaryColor) {
 	for (var loopNum = 0;  loopNum < 10; loopNum++) {
 		for (var i = 0;i<NUM_LEDS;i++) {
 			if (i % spacing == current_count) {
-				moveData[i] = color1;
+				moveData[i] = primaryColor;
 			} else {
-				moveData[i] = color2;
+				moveData[i] = secondaryColor;
 			}
 		}
 		current_count += 1;
@@ -61,7 +79,7 @@ var runMovingStreamAnimation = function (color1,color2) {
 		ws281x.render(moveData);
 		}
 
-	process.send("Start the next iteration.")
+	process.send("stream")
 	}
 // var turnOff = function() {
 // 	pixelData = new Uint32Array(NUM_LEDS);
